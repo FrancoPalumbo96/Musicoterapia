@@ -59,6 +59,11 @@ public class MusicLoader : MonoBehaviour
             currentTrack = songs.Length - 1;
         showTitle();
     }
+
+    public void stopSong()
+    {
+        source.Stop();
+    }
     
     public void playMusic()
     {

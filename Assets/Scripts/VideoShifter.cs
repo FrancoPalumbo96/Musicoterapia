@@ -18,17 +18,22 @@ public class VideoShifter : MonoBehaviour
 
     public VideoPlayer player;
 
+    //TODO sacar MusicLoader de aca, hacerlo lindo-> probablemente con eventos
+    public MusicLoader musicLoader;
     public void Start()
     {
         RenderSettings.skybox = experienceSelection;
+        player.loopPointReached += EndReached;
     }
+
 
     public void StartExperience()
     {
         player.clip = clips[_currentClip];
         player.Play();
-        Destroy(gameObject);
         RenderSettings.skybox = video360Material;
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 
     public void VideoUp()
@@ -48,5 +53,13 @@ public class VideoShifter : MonoBehaviour
     public void UpdateUI()
     {
         preview.sprite = images[_currentClip];
+    }
+    
+    private void EndReached(VideoPlayer source)
+    {
+        Debug.LogWarning("I am called");
+        RenderSettings.skybox = experienceSelection;
+        gameObject.SetActive(true);
+        musicLoader.stopSong();
     }
 }
