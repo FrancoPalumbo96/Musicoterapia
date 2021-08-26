@@ -11,35 +11,64 @@ public class MusicLoader : MonoBehaviour
     private Object[] songs;
     private AudioSource source;
     private int currentTrack;
-    public Text text;
+    public Text songTitleText;
     void Start()
     {
         source = GetComponent<AudioSource>();
         currentTrack = 0;
         songs = Resources.LoadAll("Songs", typeof(AudioClip)); //Busca todos los AudioClip dentro de la carpeta Resources
         source.clip = (AudioClip)songs[currentTrack];
-        source.Play();
+        source.loop = true;
+        //source.Play();
         showTitle(); //Esto solo se usa si necesitamos mostrar el titulo de la cancion
-        playMusic();
+        //playMusic();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (source.time > 30) //despues de 30 segundos la cancion se detiene
         {
             source.Stop(); //si quiero que sea una muestra de la cancion simplemente cambio el playNext por un stop y de ultima un loop
         }
+    }*/
+
+    //Se llama al apretar "Comenzar"
+    public void playSong()
+    {
+        if (currentTrack < songs.Length)
+            source.clip = (AudioClip) songs[currentTrack];
+        
+        if(source.clip != null)
+            source.Play();
     }
 
+    //Se llama al apretar el boton de Musica Arriba (▲)
+    public void chooseNextSong()
+    {
+        currentTrack += 1;
+        if (currentTrack >= songs.Length) 
+            currentTrack = 0;
+        showTitle();
+    }
+
+    //Se llama al apretar el boton de Musica Abajo (▼)
+    public void choosePreviousSong()
+    {
+        currentTrack -= 1;
+        if (currentTrack < 0) 
+            currentTrack = songs.Length - 1;
+        showTitle();
+    }
+    
     public void playMusic()
     {
         if (source.isPlaying) {
             return;
-        } else {
-            currentTrack--;
-            if (currentTrack < 0) {
-                currentTrack = songs.Length - 1;
-            }
+        }
+
+        currentTrack--;
+        if (currentTrack < 0) {
+            currentTrack = songs.Length - 1;
         }
         StartCoroutine(NextSong());
     }
@@ -81,8 +110,8 @@ public class MusicLoader : MonoBehaviour
         StartCoroutine(NextSong());
     }
 
-    public void showTitle()
+    private void showTitle()
     {
-        text.text = source.clip.name;
+        songTitleText.text = songs[currentTrack].name;;
     }
 }
