@@ -114,7 +114,7 @@ public class ApiDataController : MonoBehaviour
                     MyCustomArguments myCustomArguments = new MyCustomArguments();
                     myCustomArguments.id = userAndId.id;
                     IdEvent.Invoke(this, myCustomArguments);*/
-                    PlayerPrefs.SetString("ID", userAndId.id);
+                    PlayerPrefs.SetString(userName, userAndId.id);
                 }
                 else
                 {

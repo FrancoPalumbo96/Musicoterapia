@@ -20,6 +20,16 @@ public class VideoShifter : MonoBehaviour
 
     //TODO sacar MusicLoader de aca, hacerlo lindo-> probablemente con eventos
     public MusicLoader musicLoader;
+    private ApiDataController _apiDataController;
+    private String userName = "nombre_de_usuario";
+
+    private void Awake()
+    {
+        //TODO hacer esto en otro lado -> refactor
+        _apiDataController = FindObjectOfType<ApiDataController>();
+        _apiDataController.createUser(userName);
+    }
+
     public void Start()
     {
         RenderSettings.skybox = experienceSelection;
@@ -55,11 +65,16 @@ public class VideoShifter : MonoBehaviour
         preview.sprite = images[_currentClip];
     }
     
+    //TODO refactor
     private void EndReached(VideoPlayer source)
     {
-        Debug.LogWarning("I am called");
         RenderSettings.skybox = experienceSelection;
         gameObject.SetActive(true);
         musicLoader.stopSong();
+        String id = PlayerPrefs.GetString(userName, "nf");
+        /*Debug.Log("Is this the time: " + player.time);
+        Debug.Log("Video name: " + clips[_currentClip].name);
+        Debug.Log("Music name: " + musicLoader.getTitleName());*/
+        _apiDataController.updateUserDataPOST(id, clips[_currentClip].name, musicLoader.getTitleName(), (int) player.time);
     }
 }

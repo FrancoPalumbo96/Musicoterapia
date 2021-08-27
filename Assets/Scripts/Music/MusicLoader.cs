@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicLoader : MonoBehaviour
@@ -118,5 +120,10 @@ public class MusicLoader : MonoBehaviour
     private void showTitle()
     {
         songTitleText.text = songs[currentTrack].name;;
+    }
+
+    public String getTitleName()
+    {
+        return songs[currentTrack].name;
     }
 }

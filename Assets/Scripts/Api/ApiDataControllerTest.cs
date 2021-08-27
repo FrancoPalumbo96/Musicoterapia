@@ -9,13 +9,12 @@ public class ApiDataControllerTest : MonoBehaviour
    
 
     private float time;
-    private String name = "pandu";
+    private String name = "pandu_00";
     
     private void Awake()
     {
         _apiDataController = gameObject.GetComponent<ApiDataController>();
         _apiDataController.createUser(name);
-        
     }
 
 
@@ -24,7 +23,9 @@ public class ApiDataControllerTest : MonoBehaviour
     {
         if (time > 3)
         {
-            _apiDataController.updateUserDataPOST("KSHZ645HDQILL", "v01", "m01", 20);
+            String id = PlayerPrefs.GetString(name, "nf");
+            _apiDataController.updateUserDataPOST(id, "v02", "m01", 20);
+
             time = -1;
         }
         else if(time >= 0)
