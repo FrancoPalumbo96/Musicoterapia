@@ -11,7 +11,7 @@ public class ApiDataController : MonoBehaviour
 
     private static ApiDataController _instance;
 
-    public EventHandler<MyCustomArguments> IdEvent;
+    //public EventHandler<MyCustomArguments> IdEvent;
     
     public static ApiDataController Instance
     {
@@ -34,7 +34,7 @@ public class ApiDataController : MonoBehaviour
     /*
      * Metodo para hacer POST a la api con el tiempo que paso un usuario con un video y una cancion.
      */
-    public void updateUserDataPOST(String id, String video, String music, int time)
+    public void updateUserDataPOST(int id, String video, String music, int time)
     {
         Record record = new Record()
         {
@@ -54,11 +54,7 @@ public class ApiDataController : MonoBehaviour
      */
     public void createUser(String name)
     {
-        String id = PlayerPrefs.GetString(name, "nf");
-        if (id == "nf")
-        {
-            createUserGET(name);
-        }
+        createUserGET(name);
     }
     
     
@@ -114,7 +110,7 @@ public class ApiDataController : MonoBehaviour
                     MyCustomArguments myCustomArguments = new MyCustomArguments();
                     myCustomArguments.id = userAndId.id;
                     IdEvent.Invoke(this, myCustomArguments);*/
-                    PlayerPrefs.SetString(userName, userAndId.id);
+                    PlayerPrefs.SetInt(userName, userAndId.id);
                 }
                 else
                 {
@@ -132,7 +128,7 @@ public class ApiDataController : MonoBehaviour
     [Serializable]
     public class User
     {
-        public String id;
+        public int id;
         public Record data;
     }
     
@@ -149,12 +145,12 @@ public class ApiDataController : MonoBehaviour
     private class UserAndId
     {
         public String user;
-        public String id;
+        public int id;
     }
 
-    public class MyCustomArguments: EventArgs
+    /*public class MyCustomArguments: EventArgs
     {
         public String id { get; set; }
-    }
+    }*/
 
 }

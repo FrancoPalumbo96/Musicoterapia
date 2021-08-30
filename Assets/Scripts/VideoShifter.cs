@@ -21,13 +21,34 @@ public class VideoShifter : MonoBehaviour
     //TODO sacar MusicLoader de aca, hacerlo lindo-> probablemente con eventos
     public MusicLoader musicLoader;
     private ApiDataController _apiDataController;
-    private String userName = "nombre_de_usuario";
+    //private String userName = "nombre_de_usuario";
+    public String userName = "Default";
 
     private void Awake()
     {
-        //TODO hacer esto en otro lado -> refactor
+        //TODO Refactor -> hacer esto en otro lado 
+        //TODO get userName in game
+        
         _apiDataController = FindObjectOfType<ApiDataController>();
-        _apiDataController.createUser(userName);
+        userName = parseUserName(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+        //PlayerPrefs.DeleteAll();
+        
+        if (PlayerPrefs.GetInt(userName, -1) == -1)
+        {
+            Debug.Log("New User");
+            _apiDataController.createUser(userName);
+        }
+    }
+
+    private String parseUserName(String userName)
+    {
+        if (userName == null)
+        {
+            return "default";
+        }
+
+        String[] breakApart = userName.Split('\\');
+        return breakApart[breakApart.Length - 1];
     }
 
     public void Start()
@@ -71,7 +92,10 @@ public class VideoShifter : MonoBehaviour
         RenderSettings.skybox = experienceSelection;
         gameObject.SetActive(true);
         musicLoader.stopSong();
-        String id = PlayerPrefs.GetString(userName, "nf");
+        int id = PlayerPrefs.GetInt(userName, -1);
+        
+        Debug.Log("Saved ID: " + id);
+        
         /*Debug.Log("Is this the time: " + player.time);
         Debug.Log("Video name: " + clips[_currentClip].name);
         Debug.Log("Music name: " + musicLoader.getTitleName());*/

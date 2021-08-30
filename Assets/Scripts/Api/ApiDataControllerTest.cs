@@ -23,7 +23,7 @@ public class ApiDataControllerTest : MonoBehaviour
     {
         if (time > 3)
         {
-            String id = PlayerPrefs.GetString(name, "nf");
+            int id = PlayerPrefs.GetInt(name, -1);
             _apiDataController.updateUserDataPOST(id, "v02", "m01", 20);
 
             time = -1;
