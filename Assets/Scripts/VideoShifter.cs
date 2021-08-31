@@ -16,11 +16,14 @@ public class VideoShifter : MonoBehaviour
     public Material experienceSelection;
     public Material video360Material;
 
-    public VideoPlayer player;
+    public VideoPlayer videoPlayer;
+    public GameObject backButton;
 
     //TODO sacar MusicLoader de aca, hacerlo lindo-> probablemente con eventos
     public MusicLoader musicLoader;
+
     private ApiDataController _apiDataController;
+
     //private String userName = "nombre_de_usuario";
     public String userName = "Default";
 
@@ -28,11 +31,11 @@ public class VideoShifter : MonoBehaviour
     {
         //TODO Refactor -> hacer esto en otro lado 
         //TODO get userName in game
-        
+
         _apiDataController = FindObjectOfType<ApiDataController>();
         userName = parseUserName(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
         //PlayerPrefs.DeleteAll();
-        
+
         if (PlayerPrefs.GetInt(userName, -1) == -1)
         {
             Debug.Log("New User");
@@ -54,17 +57,26 @@ public class VideoShifter : MonoBehaviour
     public void Start()
     {
         RenderSettings.skybox = experienceSelection;
-        player.loopPointReached += EndReached;
+        videoPlayer.loopPointReached += EndReached;
     }
 
 
     public void StartExperience()
     {
-        player.clip = clips[_currentClip];
-        player.Play();
+        videoPlayer.clip = clips[_currentClip];
+        videoPlayer.Play();
         RenderSettings.skybox = video360Material;
         gameObject.SetActive(false);
-        //Destroy(gameObject);
+        backButton.SetActive(true);
+    }
+
+    public void StopExperience()
+    {
+        RenderSettings.skybox = experienceSelection;
+        gameObject.SetActive(true);
+        backButton.SetActive(false);
+        EndReached(videoPlayer);
+        videoPlayer.Stop();
     }
 
     public void VideoUp()
@@ -85,7 +97,7 @@ public class VideoShifter : MonoBehaviour
     {
         preview.sprite = images[_currentClip];
     }
-    
+
     //TODO refactor
     private void EndReached(VideoPlayer source)
     {
@@ -93,12 +105,14 @@ public class VideoShifter : MonoBehaviour
         gameObject.SetActive(true);
         musicLoader.stopSong();
         int id = PlayerPrefs.GetInt(userName, -1);
-        
+
         Debug.Log("Saved ID: " + id);
-        
-        /*Debug.Log("Is this the time: " + player.time);
-        Debug.Log("Video name: " + clips[_currentClip].name);
+
+        Debug.Log("Is this the time: " + videoPlayer.time);
+        String videoName = clips[_currentClip].name;
+        if (videoName.Length >= 50) videoName = videoName.Substring(0, 49);
+        /*Debug.Log("Video name: " + clips[_currentClip].name);
         Debug.Log("Music name: " + musicLoader.getTitleName());*/
-        _apiDataController.updateUserDataPOST(id, clips[_currentClip].name, musicLoader.getTitleName(), (int) player.time);
+        _apiDataController.updateUserDataPOST(id, videoName, musicLoader.getTitleName(), (int) videoPlayer.time);
     }
 }

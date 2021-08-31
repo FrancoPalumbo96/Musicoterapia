@@ -1,9 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\palum\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\palum\.Rider2019.2\system\resharper-host\Local\Transient\ReSharperHost\v192\SolutionCaches\_Musicoterapia.-1219944091.00" t="ExcludeRecursive" />
-    <e p="D:\UnityProjects\Projects\Musicoterapia" t="IncludeRecursive">
+    <e p="C:\Sandbox Unity\Musicoterapia" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -242,11 +240,24 @@
           </e>
           <e p="Third-Party Notices.txt" t="Include" />
         </e>
+        <e p="Scripts" t="Include">
+          <e p="Api" t="Include">
+            <e p="ApiDataController.cs" t="Include" />
+            <e p="ApiDataControllerTest.cs" t="Include" />
+          </e>
+          <e p="ButtonPNGFixer.cs" t="Include" />
+          <e p="Music" t="Include">
+            <e p="MusicLoader.cs" t="Include" />
+          </e>
+          <e p="VideoShifter.cs" t="Include" />
+        </e>
       </e>
       <e p="Musicoterapia.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="Temp\Bin" t="ExcludeRecursive" />
     </e>
+    <e p="C:\Users\Kuha\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Kuha\.Rider2019.3\system\resharper-host\Local\Transient\ReSharperHost\v193\SolutionCaches\_Musicoterapia.-1846703851.00" t="ExcludeRecursive" />
   </component>
 </project>
