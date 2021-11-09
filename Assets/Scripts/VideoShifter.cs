@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -9,8 +7,6 @@ public class VideoShifter : MonoBehaviour
 {
     public VideoClip[] clips = new VideoClip[1];
     public Sprite[] images = new Sprite[1];
-    public string[] names = new string[1];
-    public Text videoName;
     public Image preview;
     private int _currentClip;
     public Material experienceSelection;
@@ -18,9 +14,6 @@ public class VideoShifter : MonoBehaviour
 
     public VideoPlayer videoPlayer;
     public GameObject backButton;
-
-    //TODO sacar MusicLoader de aca, hacerlo lindo-> probablemente con eventos
-    public MusicLoader musicLoader;
 
     private ApiDataController _apiDataController;
 
@@ -103,16 +96,13 @@ public class VideoShifter : MonoBehaviour
     {
         RenderSettings.skybox = experienceSelection;
         gameObject.SetActive(true);
-        musicLoader.stopSong();
         int id = PlayerPrefs.GetInt(userName, -1);
 
         Debug.Log("Saved ID: " + id);
-
         Debug.Log("Is this the time: " + videoPlayer.time);
+        
         String videoName = clips[_currentClip].name;
         if (videoName.Length >= 50) videoName = videoName.Substring(0, 49);
-        /*Debug.Log("Video name: " + clips[_currentClip].name);
-        Debug.Log("Music name: " + musicLoader.getTitleName());*/
-        _apiDataController.updateUserDataPOST(id, videoName, musicLoader.getTitleName(), (int) videoPlayer.time);
+        _apiDataController.updateUserDataPOST(id, videoName, "No song", (int) videoPlayer.time);
     }
 }
