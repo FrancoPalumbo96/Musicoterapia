@@ -10,6 +10,7 @@ public class VoiceCommands : MonoBehaviour
     private Dictionary<string, Action> keywordActions = new Dictionary<string, Action>();
     private KeywordRecognizer _keywordRecognizer;
     private VideoShifter _videoShifter;
+    [SerializeField] private SphereRotation _sphere;
 
     private void Start()
     {
@@ -59,12 +60,12 @@ public class VoiceCommands : MonoBehaviour
 
     private void AngleDown()
     {
-        Debug.Log("Reducir ángulo");
+        _sphere.RotateDown();
     }
     
     
     private void AngleUp()
     {
-        Debug.Log("Aumentar ángulo");
+        _sphere.RotateUp();
     }
 }

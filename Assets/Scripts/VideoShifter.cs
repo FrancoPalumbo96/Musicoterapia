@@ -9,8 +9,6 @@ public class VideoShifter : MonoBehaviour
     public Sprite[] images = new Sprite[1];
     public Image preview;
     private int _currentClip;
-    public Material experienceSelection;
-    public Material video360Material;
 
     public VideoPlayer videoPlayer;
     public GameObject backButton;
@@ -49,23 +47,22 @@ public class VideoShifter : MonoBehaviour
 
     public void Start()
     {
-        RenderSettings.skybox = experienceSelection;
         videoPlayer.loopPointReached += EndReached;
     }
 
 
     public void StartExperience()
     {
+        videoPlayer.gameObject.SetActive(true);
         videoPlayer.clip = clips[_currentClip];
         videoPlayer.Play();
-        RenderSettings.skybox = video360Material;
         gameObject.SetActive(false);
         backButton.SetActive(true);
     }
 
     public void StopExperience()
     {
-        RenderSettings.skybox = experienceSelection;
+        videoPlayer.gameObject.SetActive(false);
         gameObject.SetActive(true);
         backButton.SetActive(false);
         EndReached(videoPlayer);
@@ -94,7 +91,6 @@ public class VideoShifter : MonoBehaviour
     //TODO refactor
     private void EndReached(VideoPlayer source)
     {
-        RenderSettings.skybox = experienceSelection;
         gameObject.SetActive(true);
         int id = PlayerPrefs.GetInt(userName, -1);
 

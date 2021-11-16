@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: VRIF1.7
+  companyName: AustralVR
+  productName: Musicoterapia
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -127,7 +127,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.7
+  bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -138,8 +138,12 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 1193937489472875177, guid: bc87842975b39e54c9a8257bb65aef55, type: 2}
-  - {fileID: 11400000, guid: b3ac24369c63cb246976bcaf96adab11, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: dd38c7041aa14014486d7937b4721270, type: 2}
+  - {fileID: 8020042300723288092, guid: 0ace9e5d3328dee4e93ff58c6568cd7e, type: 2}
   - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -158,6 +162,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.AustralVR.Musicoterapia
     Standalone: com.BeardedNinjaGames.VRInteractionFramework
   buildNumber:
     Standalone: 0

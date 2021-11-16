@@ -5,11 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/BNG Framework/Scenes/XR Demo.unity
     guid: a1360534006d3f845bc79b46b93cfec5
+  - enabled: 1
+    path: Assets/Scenes/VideoSelection.unity
+    guid: 546602224daa85340a16428fbb00d8fc
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b3ac24369c63cb246976bcaf96adab11,
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: dd38c7041aa14014486d7937b4721270,
       type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 2ec24d39f7b5ac84aad7e5df7b4fd3ea,
       type: 2}
