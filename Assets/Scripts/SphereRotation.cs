@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class SphereRotation : MonoBehaviour
 {
+
+    public float x = 20;
     public void RotateUp()
     {
-        this.gameObject.transform.Rotate(new Vector3(20,0,0));
+        this.gameObject.transform.Rotate(new Vector3(x,0,0));
     }
     
     public void RotateDown()
     {
-        this.gameObject.transform.Rotate(new Vector3(-20,0,0));
+        this.gameObject.transform.Rotate(new Vector3(-x,0,0));
     }
 }
