@@ -44,16 +44,16 @@ public class ButtonController : MonoBehaviour
             GetDevice();
         }
 
-        // capturing trigger button press and release    
-        bool triggerButtonValue = false;
-        if (device.TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonValue) && triggerButtonValue && !triggerIsPressed)
-        {
-            triggerIsPressed = true;
-        }
-        else if (!triggerButtonValue && triggerIsPressed)
-        {
-            triggerIsPressed = false;
-        }
+//        // capturing trigger button press and release    
+//        bool triggerButtonValue = false;
+//        if (device.TryGetFeatureValue(CommonUsages.triggerButton, out triggerButtonValue) && triggerButtonValue && !triggerIsPressed)
+//        {
+//            triggerIsPressed = true;
+//        }
+//        else if (!triggerButtonValue && triggerIsPressed)
+//        {
+//            triggerIsPressed = false;
+//        }
 
         // capturing primary button press and release
         bool primaryButtonValue = false;

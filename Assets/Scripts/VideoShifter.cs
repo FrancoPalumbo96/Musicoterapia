@@ -11,7 +11,6 @@ public class VideoShifter : MonoBehaviour
     private int _currentClip;
 
     public VideoPlayer videoPlayer;
-    public GameObject backButton;
 
     private ApiDataController _apiDataController;
 
@@ -57,14 +56,12 @@ public class VideoShifter : MonoBehaviour
         videoPlayer.clip = clips[_currentClip];
         videoPlayer.Play();
         gameObject.SetActive(false);
-        backButton.SetActive(true);
     }
 
     public void StopExperience()
     {
         videoPlayer.gameObject.SetActive(false);
         gameObject.SetActive(true);
-        backButton.SetActive(false);
         EndReached(videoPlayer);
         videoPlayer.Stop();
     }
@@ -92,6 +89,7 @@ public class VideoShifter : MonoBehaviour
     private void EndReached(VideoPlayer source)
     {
         gameObject.SetActive(true);
+        videoPlayer.gameObject.SetActive(false);
         int id = PlayerPrefs.GetInt(userName, -1);
 
         Debug.Log("Saved ID: " + id);

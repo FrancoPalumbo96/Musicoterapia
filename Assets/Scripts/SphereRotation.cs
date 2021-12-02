@@ -5,7 +5,7 @@ using UnityEngine;
 public class SphereRotation : MonoBehaviour
 {
 
-    public float x = 20;
+    public float x = 1;
     public void RotateUp()
     {
         this.gameObject.transform.Rotate(new Vector3(x,0,0));
