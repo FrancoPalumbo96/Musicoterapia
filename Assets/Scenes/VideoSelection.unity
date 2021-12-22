@@ -1006,7 +1006,7 @@ RectTransform:
   m_GameObject: {fileID: 3751890449528916151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2292569, y: 1.1968691, z: 0.98}
+  m_LocalScale: {x: 1.2292569, y: 1.3315169, z: 0.98}
   m_Children: []
   m_Father: {fileID: 3751890449664760772}
   m_RootOrder: 3
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bdb40af91f8b03344bad2aa207c751fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1471fd73f2c926458e38cf0fc70cdad, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1085,12 +1085,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 32900000, guid: 866dab96f6508dd4e9b286a65b726852, type: 3}
   - {fileID: 32900000, guid: 6a39643a7b49019458dbb8d33ad07b29, type: 3}
+  - {fileID: 32900000, guid: 0920a3b18876b3a41bd2191d0035328d, type: 3}
+  - {fileID: 32900000, guid: 96c5bcfd75838c146935be4c983d74f7, type: 3}
   images:
-  - {fileID: 21300000, guid: bdb40af91f8b03344bad2aa207c751fe, type: 3}
-  - {fileID: 21300000, guid: 708408669c333e54e84896ea6eda72a2, type: 3}
-  - {fileID: 21300000, guid: bdb40af91f8b03344bad2aa207c751fe, type: 3}
+  - {fileID: 21300000, guid: a1471fd73f2c926458e38cf0fc70cdad, type: 3}
+  - {fileID: 21300000, guid: 130bcd933c6d147438f8cb6e7d04025e, type: 3}
+  - {fileID: 21300000, guid: 57c53f7c74991fa4f9b27389197dc43f, type: 3}
   preview: {fileID: 3751890449528916149}
   videoPlayer: {fileID: 1110255745}
   userName: Default
